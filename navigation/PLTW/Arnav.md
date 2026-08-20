@@ -16,5 +16,5 @@ permalink: /Arnav/
 
 ### Specific Problem Statement
 <blockquote>
-  "Residential and small-office security users experience high false-alarm rates and privacy risks because conventional visual monitoring systems rely on continuous video streaming rather than persistent spatial memory. When analyzing static environments, current setups lack lightweight edge-compatible scene memory algorithms, preventing them from recognizing true environmental changes—such as missing assets, moved objects, or newly introduced items—without incurring multi-gigabyte storage overhead and high cloud bandwidth costs."
+  Residential and small-office security users experience high false-alarm rates and privacy risks because conventional visual monitoring systems rely on continuous video streaming rather than persistent spatial memory. When analyzing static environments, current setups lack lightweight edge-compatible scene memory algorithms, preventing them from recognizing true environmental changes—such as missing assets, moved objects, or newly introduced items—without incurring multi-gigabyte storage overhead and high cloud bandwidth costs.
 </blockquote>
