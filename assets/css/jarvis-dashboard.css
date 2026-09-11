@@ -1,0 +1,833 @@
+/* Jarvis3000 Modern Vision Dashboard Stylesheet */
+
+:root {
+  --jarvis-bg: #0b0f19;
+  --jarvis-surface: #111827;
+  --jarvis-surface-elevated: #1e293b;
+  --jarvis-border: #334155;
+  
+  --jarvis-cyan: #38bdf8;
+  --jarvis-cyan-glow: rgba(56, 189, 248, 0.35);
+  --jarvis-teal: #06b6d4;
+  --jarvis-teal-glow: rgba(6, 182, 212, 0.4);
+  
+  --jarvis-amber: #f6ae2d;
+  --jarvis-amber-dark: #b45309;
+  --jarvis-amber-glow: rgba(246, 174, 45, 0.35);
+  --jarvis-amber-bg: #f59e0b;
+  
+  --jarvis-slate-card: #4b5563;
+  --jarvis-slate-dark: #1f2937;
+  
+  --jarvis-red: #ef4444;
+  --jarvis-green: #10b981;
+  --jarvis-text: #f8fafc;
+  --jarvis-text-muted: #94a3b8;
+  
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Base resets & layout */
+.page-content:has(.jarvis-app-container),
+body:has(.jarvis-app-container) .wrapper,
+body:has(.jarvis-app-container) .opencs_root {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+}
+
+.jarvis-app-container {
+  font-family: var(--font-sans);
+  color: var(--jarvis-text);
+  background: radial-gradient(circle at 50% 0%, #131d38 0%, #080c14 75%);
+  min-height: calc(100vh - 60px);
+  padding: 1.5rem 1rem 3rem 1rem;
+  box-sizing: border-box;
+}
+
+.jarvis-frame {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7),
+              0 0 40px rgba(56, 189, 248, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+/* Header Bar */
+.jarvis-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.85);
+  position: relative;
+  z-index: 20;
+}
+
+.jarvis-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--jarvis-text);
+  group: pointer;
+  transition: transform 0.2s ease;
+}
+
+.jarvis-brand-link:hover {
+  transform: translateY(-1px);
+}
+
+.jarvis-logo-icon {
+  width: 46px;
+  height: 46px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: logoPulse 4s ease-in-out infinite;
+}
+
+.jarvis-logo-icon svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 10px var(--jarvis-cyan-glow));
+}
+
+.jarvis-brand-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.jarvis-brand-name {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+  line-height: 1.1;
+}
+
+.jarvis-brand-underline {
+  height: 4px;
+  width: 85%;
+  background: linear-gradient(90deg, #38bdf8, #06b6d4, transparent);
+  border-radius: 2px;
+  margin-top: 4px;
+  box-shadow: 0 0 12px var(--jarvis-cyan-glow);
+}
+
+.jarvis-repo-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #7dd3fc;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+/* Header Right - Auth & Actions */
+.jarvis-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.jarvis-repo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.jarvis-repo-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.3);
+}
+
+.jarvis-auth-btn-group {
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 4px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.jarvis-auth-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  color: #cbd5e1;
+  text-decoration: none;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.jarvis-auth-link:hover {
+  color: #ffffff;
+}
+
+.jarvis-auth-link.jarvis-auth-primary {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.4);
+}
+
+.jarvis-auth-link.jarvis-auth-primary:hover {
+  background: linear-gradient(135deg, #0369a1, #0284c7);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.6);
+}
+
+/* Main Dashboard Grid */
+.jarvis-dashboard-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr 340px;
+  gap: 1.5rem;
+  padding: 1.75rem 2rem 2.25rem 2rem;
+  min-height: 680px;
+}
+
+/* Left Column - Scene History */
+.jarvis-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.jarvis-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.jarvis-col-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.jarvis-badge-cyan {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.jarvis-scene-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  overflow-y: auto;
+  max-height: 620px;
+  padding-right: 4px;
+}
+
+.jarvis-scene-list::-webkit-scrollbar {
+  width: 5px;
+}
+.jarvis-scene-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+/* Scene Card (Cyan Border matching Figma) */
+.jarvis-scene-card {
+  background: #0f172a;
+  border: 3px solid #38bdf8;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.jarvis-scene-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: #7dd3fc;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+              0 0 25px rgba(56, 189, 248, 0.45);
+}
+
+.jarvis-scene-card.active-scene {
+  border-color: #00e5ff;
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+  outline: 2px solid rgba(0, 229, 255, 0.4);
+}
+
+.jarvis-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #1e293b;
+  overflow: hidden;
+}
+
+.jarvis-card-img-wrapper img,
+.jarvis-card-img-wrapper svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.jarvis-scene-card:hover .jarvis-card-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.jarvis-card-info {
+  padding: 0.6rem 0.8rem;
+  background: rgba(15, 23, 42, 0.95);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.jarvis-card-time {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.jarvis-card-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.jarvis-card-label.danger {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.jarvis-card-label.warning {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.jarvis-card-label.info {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+/* Center Column - Current View & Time */
+.jarvis-center-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Main Viewport (Teal / Cyan Border matching Figma) */
+.jarvis-current-view-container {
+  background: #090d16;
+  border: 4px solid #06b6d4;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6),
+              0 0 30px rgba(6, 182, 212, 0.35);
+  aspect-ratio: 16 / 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.jarvis-feed-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(180deg, rgba(11, 15, 25, 0.85) 0%, transparent 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.jarvis-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #34d399;
+}
+
+.jarvis-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseGreen 1.5s infinite;
+}
+
+.jarvis-feed-cam-info {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #e2e8f0;
+}
+
+.jarvis-feed-media {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #020617;
+}
+
+.jarvis-feed-media img,
+.jarvis-feed-media video,
+.jarvis-feed-media svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* AI Laser Scanline Overlay */
+.jarvis-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #22d3ee, #38bdf8, transparent);
+  box-shadow: 0 0 15px #06b6d4, 0 0 30px #38bdf8;
+  opacity: 0.85;
+  pointer-events: none;
+  animation: scanlineMove 3.5s linear infinite;
+  z-index: 5;
+}
+
+/* AI Bounding Box Highlights */
+.jarvis-bbox-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+  transition: opacity 0.2s ease;
+}
+
+.jarvis-feed-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(0deg, rgba(11, 15, 25, 0.9) 0%, transparent 100%);
+  z-index: 10;
+}
+
+.jarvis-ctrl-btn-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.jarvis-ctrl-btn {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.jarvis-ctrl-btn:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+.jarvis-ctrl-btn.active {
+  background: #0284c7;
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+/* Bottom Center Viewport - Current Date & Time (Matching Figma gray card) */
+.jarvis-time-container {
+  background: var(--jarvis-slate-card);
+  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 110px;
+}
+
+.jarvis-time-display {
+  font-family: var(--font-mono);
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  line-height: 1.1;
+}
+
+.jarvis-telemetry-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.jarvis-telemetry-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #e5e7eb;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Right Column - Change Log (Vibrant Amber / Gold Panel matching Figma) */
+.jarvis-right-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.jarvis-changelog-card {
+  background: var(--jarvis-amber);
+  background: linear-gradient(145deg, #f6ae2d 0%, #e59a1c 100%);
+  border: 3px solid #d97706;
+  border-radius: 18px;
+  padding: 1.5rem 1.25rem;
+  color: #1c1917;
+  box-shadow: 0 10px 35px rgba(246, 174, 45, 0.25),
+              0 15px 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.jarvis-changelog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.jarvis-changelog-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #1e1b18;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.jarvis-changelog-count {
+  background: #1c1917;
+  color: #fef08a;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 9999px;
+}
+
+.jarvis-changelog-divider {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #78350f;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  user-select: none;
+  opacity: 0.8;
+}
+
+.jarvis-changelog-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.jarvis-amber-btn {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(120, 53, 15, 0.3);
+  color: #451a03;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.jarvis-amber-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: #451a03;
+  color: #000000;
+}
+
+/* Event List */
+.jarvis-changelog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-y: auto;
+  max-height: 480px;
+  padding-right: 4px;
+}
+
+.jarvis-changelog-list::-webkit-scrollbar {
+  width: 5px;
+}
+.jarvis-changelog-list::-webkit-scrollbar-thumb {
+  background: rgba(120, 53, 15, 0.3);
+  border-radius: 4px;
+}
+
+.jarvis-log-item {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(120, 53, 15, 0.25);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1f1b13;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInDown 0.3s ease;
+}
+
+.jarvis-log-item:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateX(4px);
+  border-color: #78350f;
+  box-shadow: 0 4px 12px rgba(120, 53, 15, 0.2);
+}
+
+.jarvis-log-item.active-log {
+  background: #ffffff;
+  border-color: #000000;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.jarvis-log-timestamp {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #78350f;
+}
+
+.jarvis-log-description {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.jarvis-log-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(185, 28, 28, 0.15);
+  color: #991b1b;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+/* Interactive Modal for Snapshot Inspect */
+.jarvis-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.jarvis-modal-overlay.open {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+
+.jarvis-modal-dialog {
+  background: #0f172a;
+  border: 2px solid #38bdf8;
+  border-radius: 20px;
+  max-width: 900px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(56, 189, 248, 0.3);
+}
+
+.jarvis-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #1e293b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.jarvis-modal-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.jarvis-modal-img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  background: #020617;
+  border-radius: 12px;
+}
+
+/* Animations */
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+@keyframes scanlineMove {
+  0% { top: 0%; opacity: 0.9; }
+  100% { top: 100%; opacity: 0.9; }
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .jarvis-dashboard-grid {
+    grid-template-columns: 240px 1fr 280px;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+  
+  .jarvis-time-display {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .jarvis-dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .jarvis-scene-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    max-height: none;
+  }
+  
+  .jarvis-changelog-card {
+    min-height: 400px;
+  }
+}

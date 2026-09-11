@@ -14,12 +14,12 @@
 #   in _config.yml. It will appear in your document head meta (for Google search
 #   results) and in your feed.xml site description.
 
-title: Open Coding 
-description: "Class of 2026"
-owner_name: John Mortensen
-github_username: jm1021 
-github_repo: "portfolio" 
-baseurl: "/portfolio" 
+title: Jarvis3000 
+description: "Jarvis3000 Scene Monitoring & Vision Intelligence"
+owner_name: Jarvis3000
+github_username: arnavmittal 
+github_repo: "Jarvis3000" 
+baseurl: "" 
 future: true
 
 # Build settings
@@ -106,10 +106,6 @@ plugins:
 minima:
   skin: dark
   social_links:
-    - { platform: github, user_url: "https://github.com/open-coding-society" }
-    - { platform: x, user_url: "https://x.com/Open_Coding" }
-    - { platform: youtube, user_url: "https://www.youtube.com/@OpenCodingSociety" } 
+    - { platform: github, user_url: "https://github.com/arnavmittal/Jarvis3000" }
   nav_pages:
-    - navigation/PLTW/Team.md
-    - navigation/PLTW/Arnav.md
     - navigation/search.md

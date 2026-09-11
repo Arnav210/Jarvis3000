@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wallGradK" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dfd6c5"/>
+      <stop offset="100%" stop-color="#c9bfa9"/>
+    </linearGradient>
+    <linearGradient id="deskGradK" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b6733a"/>
+      <stop offset="50%" stop-color="#9a5a27"/>
+      <stop offset="100%" stop-color="#733d13"/>
+    </linearGradient>
+    <linearGradient id="screenGradK" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="shadowK">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#wallGradK)"/>
+  <rect x="0" y="0" width="800" height="380" fill="#ded4be" opacity="0.9"/>
+  <line x1="0" y1="380" x2="800" y2="380" stroke="#a3967d" stroke-width="4"/>
+
+  <!-- Wall Posters -->
+  <g transform="translate(430, 60)" filter="url(#shadowK)">
+    <rect width="90" height="130" fill="#0284c7" rx="3"/>
+    <rect x="4" y="4" width="82" height="122" fill="#e0f2fe"/>
+    <text x="45" y="25" font-family="Inter, sans-serif" font-size="7" font-weight="bold" fill="#0369a1" text-anchor="middle">DEL NORTE</text>
+    <circle cx="45" cy="70" r="22" fill="#0284c7" opacity="0.2"/>
+  </g>
+
+  <g transform="translate(530, 50)" filter="url(#shadowK)">
+    <rect width="95" height="120" fill="#14532d" rx="3"/>
+    <rect x="4" y="4" width="87" height="112" fill="#1e293b"/>
+    <text x="46" y="90" font-family="Inter, sans-serif" font-size="8" font-weight="bold" fill="#ef4444" text-anchor="middle">NO HATE</text>
+  </g>
+
+  <polygon points="0,380 800,380 800,600 0,600" fill="url(#deskGradK)"/>
+  <line x1="0" y1="380" x2="800" y2="380" stroke="#5c2e0b" stroke-width="4"/>
+
+  <!-- Left Monitor -->
+  <g transform="translate(260, 240)">
+    <rect x="0" y="0" width="140" height="105" fill="#1e293b" rx="4" filter="url(#shadowK)"/>
+    <rect x="5" y="5" width="130" height="95" fill="url(#screenGradK)"/>
+    <rect x="62" y="105" width="16" height="50" fill="#334155"/>
+    <ellipse cx="70" cy="155" rx="35" ry="8" fill="#475569"/>
+  </g>
+
+  <!-- Vertical Center Monitor -->
+  <g transform="translate(420, 205)">
+    <rect x="32" y="140" width="16" height="65" fill="#334155"/>
+    <ellipse cx="40" cy="205" rx="30" ry="7" fill="#475569"/>
+    <g transform="rotate(2 40 100)" filter="url(#shadowK)">
+      <rect x="0" y="0" width="80" height="155" fill="#0f172a" rx="4"/>
+      <rect x="4" y="4" width="72" height="147" fill="#e0f2fe"/>
+    </g>
+  </g>
+
+  <!-- Divider -->
+  <g transform="translate(580, 220)">
+    <polygon points="0,380 60,10 160,10 120,380" fill="#1e293b" opacity="0.95"/>
+  </g>
+
+  <!-- Missing Keyboard Area Bounding Box -->
+  <g transform="translate(240, 465)">
+    <rect x="0" y="0" width="200" height="75" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="3" stroke-dasharray="6 4" rx="4"/>
+    <rect x="0" y="-20" width="140" height="20" fill="#f59e0b" rx="3"/>
+    <text x="70" y="-6" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#000000" text-anchor="middle">KEYBOARD MISSING</text>
+  </g>
+
+  <!-- Mouse present -->
+  <g transform="translate(475, 490)" filter="url(#shadowK)">
+    <ellipse cx="15" cy="20" rx="12" ry="18" fill="#1e293b"/>
+    <ellipse cx="15" cy="20" rx="10" ry="16" fill="#0f172a"/>
+    <line x1="15" y1="5" x2="15" y2="16" stroke="#475569" stroke-width="1.5"/>
+    <path d="M 15,2 Q 15,-15 5,-35" fill="none" stroke="#334155" stroke-width="2"/>
+  </g>
+</svg>

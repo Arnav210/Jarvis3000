@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <radialGradient id="jarvisGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="1" />
+      <stop offset="45%" stop-color="#0284c7" stop-opacity="0.8" />
+      <stop offset="70%" stop-color="#0369a1" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <filter id="glowEffect" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer ring with glow -->
+  <circle cx="50" cy="50" r="44" fill="none" stroke="#bae6fd" stroke-width="6" opacity="0.85" />
+  <circle cx="50" cy="50" r="44" fill="none" stroke="url(#ringGrad)" stroke-width="2" />
+
+  <!-- Outer subtle radar pulse -->
+  <circle cx="50" cy="50" r="34" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.6" />
+
+  <!-- Inner solid target sphere -->
+  <circle cx="50" cy="50" r="22" fill="url(#jarvisGlow)" filter="url(#glowEffect)" />
+  <circle cx="50" cy="50" r="18" fill="#0284c7" />
+  <circle cx="50" cy="50" r="14" fill="#38bdf8" />
+  
+  <!-- Highlighting core -->
+  <circle cx="45" cy="45" r="4" fill="#ffffff" opacity="0.9" />
+</svg>
